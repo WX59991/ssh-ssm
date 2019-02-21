@@ -14,12 +14,6 @@ import java.util.List;
  */
 @Repository
 public class UserDaoImp  extends HibernateDaoSupport implements UserDao {
-
-	@Autowired
-	public void setSessionFactory0(SessionFactory sessionFactory) {
-		super.setSessionFactory(sessionFactory);
-	}
-
 	public void insertBean(User user) {
 		this.getHibernateTemplate().save(user);
 	}

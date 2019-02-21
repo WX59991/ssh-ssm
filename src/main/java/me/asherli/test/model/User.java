@@ -1,8 +1,13 @@
 package me.asherli.test.model;
 
 import lombok.Data;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cache;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by Administrator on 2019/2/19.
@@ -10,7 +15,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 @Data
-public class User {
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column

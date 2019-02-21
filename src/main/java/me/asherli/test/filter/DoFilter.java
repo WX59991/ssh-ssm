@@ -16,9 +16,11 @@ public class DoFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 		HttpServletRequest httpServletRequest=(HttpServletRequest) servletRequest;
-		httpServletRequest.getRequestURL();
-		System.out.println("请求路径");
-		httpServletRequest.getRequestDispatcher("/hello.html").forward(httpServletRequest,servletResponse);
+		String url=httpServletRequest.getRequestURL().toString();
+		if(url.endsWith("/test")){
+			System.out.println("请求路径"+url);
+			httpServletRequest.getRequestDispatcher("/hello.html").forward(httpServletRequest,servletResponse);
+		}
 	}
 
 	@Override
